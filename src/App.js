@@ -6,6 +6,7 @@ import Login from './pgs/Login/LoginAccount';
 import Produtos from './pgs/Produtos/Produtos';
 import Vitrine from './pgs/Produtos/Vitrine';
 import Cart from './pgs/Cart/Cart';
+import Transacao from './pgs/Transacao/Transacao';
 
 //metodos gestão
 
@@ -34,6 +35,10 @@ function App() {
 
               <li className="nav-item">
                 <button className="nav-link btn" onClick={() => handleNavClick('cart')}>Carrinho</button>
+              </li>
+
+              <li className="nav-item">
+                <button className="nav-link btn" onClick={() => handleNavClick('transacao')}>Transações</button>
               </li>
 
               <li className="nav-item">
@@ -87,6 +92,13 @@ function App() {
       {currentPage === 'cart' && (
         <div className="mt-4">
           <Cart />
+        </div>
+      )}
+
+      {/* transacao */}
+      {currentPage === 'transacao' && (
+        <div className="mt-4">
+          <Transacao />
         </div>
       )}
 

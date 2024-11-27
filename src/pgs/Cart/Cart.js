@@ -4,11 +4,12 @@ import { jwtDecode } from "jwt-decode";
 
 const Cart = ({ handleNavClick }) => {
     const [cartItems, setCartItems] = useState([]);
-
+    
 
     // mesmo useffect para n precisa do onclick
     useEffect(() => {
         HandleViewProdutos();
+        
     }, []);
 
     const HandleViewProdutos = async () => {
@@ -42,6 +43,25 @@ const Cart = ({ handleNavClick }) => {
         }
     };
 
+    const HandlePagamento = async (metodo) => {
+        try {
+            const token = localStorage.getItem('authToken');
+
+            await axios.post(`http://localhost:8080/payment/${metodo}`, {}, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            alert(`Pagamento por ${metodo} realizado com sucesso!`);
+
+            setCartItems([]); 
+            HandleViewProdutos(); 
+            
+        } catch (error) {
+            console.error(`Erro ao realizar pagamento por ${metodo}:`, error);
+            alert('Erro ao realizar pagamento.');
+        }
+    };
+
     // Calcular valor total ---- reduce intera o array, acc é o acumulador, e item é os itens do carrinho
     const totalValue = cartItems.reduce((acc, item) => acc + item.valor, 0);
 
@@ -60,9 +80,12 @@ const Cart = ({ handleNavClick }) => {
                     ))}
 
                     <div className="mt-3 text-light">
-                        <h4 className="text-warning">Valor Total: R$ {totalValue.toFixed(2)}</h4> 
+                        <h4 className="text-warning">Valor Total: R$ {totalValue.toFixed(2)}</h4>
                         {/* tofixed acima ele formata para o decilmal o valor */}
                         
+                        <button className="btn btn-primary me-2" onClick={() => HandlePagamento('credito')}>Pagar com Crédito</button>
+                        <button className="btn btn-success" onClick={() => HandlePagamento('pix')}>Pagar com PIX</button>
+
                     </div>
                 </div>
             )}
