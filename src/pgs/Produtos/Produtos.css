@@ -1,0 +1,80 @@
+.user-account-form {
+    background-color: #141519;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.user-account-form h3 {
+    color: #ffffff;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.user-account-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.user-account-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2c2f36;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.user-account-form input::placeholder {
+    color: #ffffff;
+}
+
+.user-account-form div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.user-account-form button {
+    flex: 1;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.user-account-form button:hover {
+    background-color: #2c2f36;
+    
+}
+
+.response-message {
+    color: red;
+    margin-top: 15px;
+    
+}
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    color: rgb(255, 255, 255);
+    background-color: #2c2f36;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+}
+
+th {
+    background-color: #2c2f36;
+}
+
