@@ -34,11 +34,11 @@ const Vitrine = () => {
             const userId = decodedToken.userId; 
 
             const cartItem = {
-                productId: idProduto,
-                quantity: 1,
+                IdProduto: idProduto,
+                quantidade: 1,
             };
 
-            console.log("ID Produto:", idProduto);
+            // console.log("ID Produto:", idProduto);
             
             const response = await axios.post('http://localhost:8080/cart/add', cartItem, {
                 headers: {
@@ -52,7 +52,7 @@ const Vitrine = () => {
                 alert('Produto adicionado ao carrinho!');
             } else {
                 console.error('Resposta inesperada:', response);
-                alert('Erro ao adicionar o produto ao carrinho.');
+                alert('Erro ao adicionar o produto');
             }
 
         } catch (error) {

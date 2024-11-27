@@ -21,7 +21,7 @@ function App() {
 
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <a href="/" className="navbar-brand fs-2 text-warning">BluePages</a>
+          <a href="/" className="navbar-brand fs-2 text-warning">TechYellow</a>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
@@ -43,6 +43,7 @@ function App() {
               <li className="nav-item">
                 <button className="nav-link btn" onClick={() => {
                   localStorage.removeItem('authToken');
+                  alert('Saindo....');
                   setCurrentPage('landing');
                 }}
                 >                  

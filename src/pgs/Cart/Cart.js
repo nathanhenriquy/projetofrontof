@@ -29,11 +29,11 @@ const Cart = ({ handleNavClick }) => {
         }
     };
 
-    const HandleRemoveItem = async (idProduto) => {
+    const HandleRemoveItem = async (IdProduto) => {
         try {
             const token = localStorage.getItem('authToken');
 
-            await axios.delete(`http://localhost:8080/cart/removeproduto/${idProduto}`, {
+            await axios.delete(`http://localhost:8080/cart/removeproduto/${IdProduto}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             HandleViewProdutos();
@@ -41,6 +41,9 @@ const Cart = ({ handleNavClick }) => {
             console.error('Erro ao remover produto:', error);
         }
     };
+
+    // Calcular valor total ---- reduce intera o array, acc é o acumulador, e item é os itens do carrinho
+    const totalValue = cartItems.reduce((acc, item) => acc + item.valor, 0);
 
     return (
         <div className="container mt-4">
@@ -51,10 +54,16 @@ const Cart = ({ handleNavClick }) => {
                 <div className="list-group">
                     {cartItems.map((item) => (
                         <div key={item.id} className="list-group-item d-flex justify-content-between align-items-center bg-dark text-light">
-                            <span>IdProduto: {item.IdProduto} ----- R$ {item.valor}</span>
-                            <button className="btn btn-danger btn-sm" onClick={() => HandleRemoveItem(item.produto.id)}> Remover </button>
+                            <span>IdProduto: {item.IdProduto} ----- Quantidade: {item.quantidade} ----- R$ {item.valor}</span>
+                            <button className="btn btn-danger btn-sm" onClick={() => HandleRemoveItem(item.IdProduto)}> Remover </button>
                         </div>
                     ))}
+
+                    <div className="mt-3 text-light">
+                        <h4 className="text-warning">Valor Total: R$ {totalValue.toFixed(2)}</h4> 
+                        {/* tofixed acima ele formata para o decilmal o valor */}
+                        
+                    </div>
                 </div>
             )}
 

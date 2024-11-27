@@ -47,7 +47,7 @@ const ProductDataForm = () => {
 
         try {
             const response = await axios.post('http://localhost:8080/produtos/novoproduto', formData); // colocar o endpoint
-            setResponseMessage('Produto Criado com sucesso!');
+            alert('Produto Criado com Sucesso');
             console.log('Resposta do servidor:', response.data);
 
             setFormData({
@@ -59,7 +59,7 @@ const ProductDataForm = () => {
 
         } catch (error) {
             console.error('Erro ao criar produto:', error);
-            setResponseMessage('Falha ao conectar ao servidor');
+            
         }
 
     };
@@ -92,7 +92,7 @@ const ProductDataForm = () => {
     const handleUpdate = async () => {
         try {
             const response = await axios.put(`http://localhost:8080/produtos/updateprodutos/${updateId}`, updateData);
-            setResponseMessage('Produto atualizado');
+            alert('Produto Atualizado');
             console.log('Resposta do servidor:', response.data);
 
             handleListAll(); 
@@ -108,7 +108,7 @@ const ProductDataForm = () => {
         try {
             const response = await axios.get('http://localhost:8080/produtos/allprodutos');
             setProducts(response.data);
-            setResponseMessage('Produtos carregados com sucesso!');
+            alert('Produto Carregados');
         } catch (error) {
             console.error('Erro ao mostrar produtos:', error);
             setResponseMessage('Falha ao conectar ao servidor');
@@ -120,7 +120,7 @@ const ProductDataForm = () => {
     const handleDelete = async () => {
         try {
             await axios.delete(`http://localhost:8080/produtos/deleteprodutos/${deleteId}`);
-            setResponseMessage('Produto deletado com sucesso!');
+            alert('Produto Deletado');
             setDeleteId('');
             
             handleListAll(); 
