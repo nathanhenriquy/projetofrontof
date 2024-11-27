@@ -22,7 +22,8 @@ const Vitrine = () => {
     return (
         <div className="container mt-4">
             <div className="row">
-                {products.map((product) => (
+                {/* o map pega cada elemento e faz um array para mostrar, e recomeça */}
+                {products.map((product) => ( 
                     <div key={product.id} className="col-md-3 mb-4">
                         <div className="card h-100 text-center bg-dark">
                                 <div className="card-body">
