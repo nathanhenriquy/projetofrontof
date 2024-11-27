@@ -5,15 +5,17 @@ import UserAccountForm from './pgs/NewUsers/UserAccountForm';
 import Login from './pgs/Login/LoginAccount';
 import Produtos from './pgs/Produtos/Produtos';
 import Vitrine from './pgs/Produtos/Vitrine';
+import Cart from './pgs/Cart/Cart';
+
 //metodos gestão
 
 function App() {
-  const[currentPage, setCurrentPage] = useState('landing');
+  const [currentPage, setCurrentPage] = useState('landing');
 
   const handleNavClick = (page) => {
     setCurrentPage(page);
-  }  
-  
+  }
+
   return (
     <div className="App">
 
@@ -31,26 +33,36 @@ function App() {
               </li>
 
               <li className="nav-item">
+                <button className="nav-link btn" onClick={() => handleNavClick('cart')}>Carrinho</button>
+              </li>
+
+              <li className="nav-item">
                 <button className="nav-link btn" onClick={() => handleNavClick('produtos')}>Produtos</button>
               </li>
 
               <li className="nav-item">
-                <button className="nav-link btn" onClick={() => handleNavClick('logout')}>Sair</button>
+                <button className="nav-link btn" onClick={() => {
+                  localStorage.removeItem('authToken');
+                  setCurrentPage('landing');
+                }}
+                >                  
+                  Sair
+                </button>
               </li>
-              
+
             </ul>
           </div>
         </div>
       </nav>
 
-      
+
 
       {/* conteudo principal*/}
       <div className="conteiner text-center mt-5">
         {currentPage === 'landing' && (
           <div className="mt-4">
             <h1 className="display-4  text-warning ">Seja Bem Vindo</h1>
-            <Vitrine />      
+            <Vitrine />
           </div>
         )}
 
@@ -59,21 +71,28 @@ function App() {
       {/* criar conta */}
       {currentPage === 'createAccount' && (
         <div className="mt-4">
-          <UserAccountForm />                          
+          <UserAccountForm />
         </div>
       )}
 
       {/* login */}
       {currentPage === 'login' && (
-        <div className="mt-4">          
-          <Login setCurrentPage={setCurrentPage} />          
+        <div className="mt-4">
+          <Login setCurrentPage={setCurrentPage} />
+        </div>
+      )}
+
+      {/* carrinho */}
+      {currentPage === 'cart' && (
+        <div className="mt-4">
+          <Cart />
         </div>
       )}
 
       {/* Produtos */}
       {currentPage === 'produtos' && (
         <div className="mt-4">
-           <Produtos />
+          <Produtos />
         </div>
       )}
 

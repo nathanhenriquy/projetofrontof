@@ -30,8 +30,10 @@ const LoginForm = ( {setCurrentPage} ) => {
             localStorage.setItem('authToken', token);  // Armazena o token no localStorage
             
             setResponseMessage('Login realizado com sucesso!');
-
-            setCurrentPage('produtos');           
+            
+            setTimeout(() => {
+                setCurrentPage('landing'); 
+            }, 1000);
             
 
         } catch (error) {
