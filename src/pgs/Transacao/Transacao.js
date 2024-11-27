@@ -5,7 +5,7 @@ const Transacao = () => {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
-        const HandleViewTransacoes = async () => {
+        const handleViewTransacao = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/payment/transacoes', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` },
@@ -16,7 +16,7 @@ const Transacao = () => {
             }
         };
 
-        HandleViewTransacoes();
+        handleViewTransacao();
     }, []);
 
     return (

@@ -21,7 +21,7 @@ const Vitrine = () => {
         }
     };
 
-    const HandleAddToCart = async (idProduto) => {
+    const handleAddCarrinho = async (idProduto) => {
         try {
             const token = localStorage.getItem('authToken');
 
@@ -71,7 +71,7 @@ const Vitrine = () => {
                                 <h5 className="card-title text-light">{product.nome}</h5>
                                 <p className="card-text text-light">{product.descricao}</p>
                                 <p className="text-success"><strong>R$ {product.preco}</strong></p>
-                                <button className="btn btn-primary" onClick={() => HandleAddToCart(product.id)} >  Adicionar ao Carrinho</button>
+                                <button className="btn btn-primary" onClick={() => handleAddCarrinho(product.id)} >  Adicionar ao Carrinho</button>
                             </div>
                         </div>
                     </div>

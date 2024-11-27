@@ -30,7 +30,7 @@ const Cart = ({ handleNavClick }) => {
         }
     };
 
-    const HandleRemoveItem = async (IdProduto) => {
+    const HandleRemove = async (IdProduto) => {
         try {
             const token = localStorage.getItem('authToken');
 
@@ -75,7 +75,7 @@ const Cart = ({ handleNavClick }) => {
                     {cartItems.map((item) => (
                         <div key={item.id} className="list-group-item d-flex justify-content-between align-items-center bg-dark text-light">
                             <span>IdProduto: {item.IdProduto} ----- Quantidade: {item.quantidade} ----- R$ {item.valor}</span>
-                            <button className="btn btn-danger btn-sm" onClick={() => HandleRemoveItem(item.IdProduto)}> Remover </button>
+                            <button className="btn btn-danger btn-sm" onClick={() => HandleRemove(item.IdProduto)}> Remover </button>
                         </div>
                     ))}
 
