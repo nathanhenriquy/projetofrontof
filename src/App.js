@@ -7,6 +7,7 @@ import Produtos from './pgs/Produtos/Produtos';
 import Vitrine from './pgs/Produtos/Vitrine';
 import Cart from './pgs/Cart/Cart';
 import Transacao from './pgs/Transacao/Transacao';
+import Fornecedores from './pgs/Fornecedores/Fornecedores';
 
 //metodos gestão
 
@@ -44,6 +45,11 @@ function App() {
               <li className="nav-item">
                 <button className="nav-link btn" onClick={() => handleNavClick('produtos')}>Produtos</button>
               </li>
+
+              <li className="nav-item">
+                <button className="nav-link btn" onClick={() => handleNavClick('fornecedores')}>Fornecedores</button>
+              </li>
+
 
               <li className="nav-item">
                 <button className="nav-link btn" onClick={() => {
@@ -106,6 +112,13 @@ function App() {
       {currentPage === 'produtos' && (
         <div className="mt-4">
           <Produtos />
+        </div>
+      )}
+
+       {/* fornecedores */}
+       {currentPage === 'fornecedores' && (
+        <div className="mt-4">
+          <Fornecedores />
         </div>
       )}
 

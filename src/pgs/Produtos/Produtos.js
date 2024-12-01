@@ -108,7 +108,7 @@ const ProductDataForm = () => {
         try {
             const response = await axios.get('http://localhost:8080/produtos/allprodutos');
             setProducts(response.data);
-            alert('Produto Carregados');
+            
         } catch (error) {
             console.error('Erro ao mostrar produtos:', error);
             setResponseMessage('Falha ao conectar ao servidor');
